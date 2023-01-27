@@ -34,7 +34,7 @@ void find_primes(int start, int end) {
 
 int main() {
     std::vector<std::thread> threads;
-    int upTill = 100;
+    int upTill = 100000000;
     int num_threads = 8;
     int range = upTill / num_threads;
     auto start = std::chrono::high_resolution_clock::now();
@@ -60,12 +60,12 @@ int main() {
     outputFile << duration.count() << "     ";
 
     outputFile << number_of_primes << "     ";
-    outputFile << sum_of_primes << "    "<< std::endl;
+    outputFile << sum_of_primes << "    " << std::endl;
     std::sort(primes.begin(), primes.end());
-    for (int i = 0; i < primes.size(); i++ ) {
+    for (int i = primes.size()-10; i < primes.size(); i++) {
         outputFile << primes[i] << " ";
     }
     outputFile.close();
-    
+
     return 0;
 }
